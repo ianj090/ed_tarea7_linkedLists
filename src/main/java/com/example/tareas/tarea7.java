@@ -17,8 +17,8 @@ public class tarea7 {
     }
 
     @RequestMapping("/play")
-    public String play() {
-        return LinkedList.playNow();
+    public String play(String song) {
+        return LinkedList.playNow(song);
     }
 
     @RequestMapping("/next")
@@ -81,16 +81,6 @@ class LinkedList {
         return "Added Successfully";
     }
 
-    public static String playNow() {
-        if (playing == null) {
-            playing = list.head;
-        }
-        if (playing == null) {
-            return "No songs added";
-        }
-        return "Playing: " + playing.data;
-    }
-
 //    public static String playNow() {
 //        if (playing == null) {
 //            playing = list.head;
@@ -100,6 +90,24 @@ class LinkedList {
 //        }
 //        return "Playing: " + playing.data;
 //    }
+
+    public static String playNow(String name) {
+        Node current = list.head;
+        String result = "";
+        int count = 0;
+
+        while (current != null) {
+            if (current.data.equals(name)) {
+                playing = current;
+                count++;
+            }
+            current = current.next;
+        }
+        if (count == 1) {
+            return "Playing: " + playing.data;
+        }
+        return "Song does not exist";
+    }
 
     public static String playNext() {
         if (playing == null) {
