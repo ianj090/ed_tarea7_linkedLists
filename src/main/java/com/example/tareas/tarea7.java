@@ -81,19 +81,8 @@ class LinkedList {
         return "Added Successfully";
     }
 
-//    public static String playNow() {
-//        if (playing == null) {
-//            playing = list.head;
-//        }
-//        if (playing == null) {
-//            return "No songs added";
-//        }
-//        return "Playing: " + playing.data;
-//    }
-
     public static String playNow(String name) {
         Node current = list.head;
-        String result = "";
         int count = 0;
 
         while (current != null) {
